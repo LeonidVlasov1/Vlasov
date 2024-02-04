@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David site</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #b8860b, #ff0000);
+            color: #fff;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            position: relative;
+        }
+
+        section {
+            padding: 50px;
+        }
+
+        footer {
+            padding: 20px;
+        }
+
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Указываем ширину окна */
+            max-width: 80%; /* Ограничиваем максимальную ширину */
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Стили для красивой кнопки */
+        .auth-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Стили для полей ввода в окне авторизации */
+        .auth-input {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Стили для кнопки в окне авторизации */
+        .auth-submit {
+            width: 100%;
+            padding: 10px;
+            background-color: #00bffb;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Стили для вопроса о имени */
+        #nameQuestion {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Добро пожаловать на мой веб-сайт</h1>
+    <!-- Добавляем красивую кнопку в левом верхнем углу -->
+    <button class="auth-button" onclick="openModal()">Авторизоваться</button>
+</header>
+
+<section>
+    <h3>Это мой первый сайт!</h3>
+    <!-- Добавляем стиль к вопросу о имени -->
+    <h1 id="nameQuestion">Как вас зовут?</h1>
+    <input type="text" id="nameInput" placeholder="Введите ваше имя">
+    <button onclick="showMessage()">Ответить</button>
+    <p id="responseMessage"></p>
+</section>
+
+<footer>
+    <h3>Спасибо за внимание!</h3>
+</footer>
+
+<!-- Модальное окно для авторизации -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p>Введите данные для авторизации:</p>
+        <!-- Поля ввода в окне авторизации -->
+        <input class="auth-input" type="text" id="loginInput" placeholder="Логин">
+        <input class="auth-input" type="password" id="passwordInput" placeholder="Пароль">
+        <!-- Кнопка для входа -->
+        <button class="auth-submit" onclick="authenticate()">Войти</button>
+    </div>
+</div>
+
+<script>
+    function showMessage() {
+        var userName = document.getElementById("nameInput").value;
+        var message = "Очень красивое имя, " + userName + "!";
+        document.getElementById("responseMessage").innerText = message;
+    }
+
+    function openModal() {
+        document.getElementById('myModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+
+    function authenticate() {
+        // Здесь вы можете добавить логику авторизации
+        // Например, проверка логина и пароля
+        // После успешной авторизации, закройте модальное окно и выполните другие действия
+        closeModal();
+    }
+</script>
+</body>
+</html>
